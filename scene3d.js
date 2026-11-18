@@ -50,7 +50,7 @@
  }
  let lastW=0,lastH=0;
  window.labor3D={surface,render(key,opt){
-  const {width:W,height:H,dpr,centerX,centerY,angle,opacity}=opt;
+  const {width:W,height:H,dpr,centerX,centerY,stageHeight,angle,opacity}=opt;
   surface.style.opacity=opacity;surface.style.visibility=key?'visible':'hidden';if(!key)return;
   const w=Math.round(W*dpr),h=Math.round(H*dpr);
   if(w!==lastW||h!==lastH){surface.width=w;surface.height=h;lastW=w;lastH=h;}
@@ -59,7 +59,7 @@
   let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
   const projected=geometry.map(f=>({p:f.p.map(p=>{const q=project(p);minX=Math.min(minX,q[0]);maxX=Math.max(maxX,q[0]);minY=Math.min(minY,q[1]);maxY=Math.max(maxY,q[1]);return q;}),c:f.c}));
   if(!projected.length)return;
-  const maxWidth=W*(W<750?.83:.43),maxHeight=H*(W<750?.31:key==='tools'?.30:.58);
+  const maxWidth=W*(stageHeight?.83:.43),maxHeight=stageHeight?(stageHeight-56)*.73:H*(key==='tools'?.30:.58);
   const scale=Math.min(maxWidth/(maxX-minX),maxHeight/(maxY-minY));
   const mx=(minX+maxX)/2,my=(minY+maxY)/2;
   if(gl){
