@@ -1,0 +1,35 @@
+.photo {
+  max-width: 430px;
+  margin: 2.3rem 0 1.5rem;
+}
+.photo--portrait { max-width: 245px; }
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--photo-ratio);
+  object-fit: cover;
+  border-radius: 3px;
+  filter: var(--photo-grade);
+}
+.photo--artesano {
+  --photo-ratio: 1481 / 2048;
+  --photo-grade: brightness(1.10) contrast(0.95) saturate(0.93);
+}
+.photo--san-telmo {
+  --photo-ratio: 2048 / 1385;
+  --photo-grade: brightness(1.02) contrast(0.92) saturate(0.88);
+}
+.photo--reparto {
+  --photo-ratio: 1220 / 2048;
+  --photo-grade: brightness(1.16) contrast(0.94) saturate(0.88);
+}
+.photo figcaption {
+  margin-top: 0.7rem;
+  color: #c7d0cd;
+  font: 12px/1.55 Arial, sans-serif;
+}
+.photo figcaption span {
+  display: block;
+  color: #a2b3b1;
+}
